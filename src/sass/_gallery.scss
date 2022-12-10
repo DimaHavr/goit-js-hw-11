@@ -1,16 +1,52 @@
+.gallery-container {
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
 .gallery {
+   margin: 0;
+   padding: 0;
+   padding-top: 100px;
+   padding-bottom: 25px;
    display: flex;
-   flex-wrap: wrap;
-   gap: 10px;
-   flex: 1 1 1;
    justify-content: center;
+   align-content: center;
+   gap: 15px;
+   @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+   }
+   @media screen and (min-width: 768px) {
+      flex-wrap: wrap;
+      flex: 1 1 1;
+   }
 }
 
 .photo-card {
-   width: 450px;
-   height: 350px;
-   object-fit: fill;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   object-fit: cover;
    overflow: hidden;
+   @media screen and (max-width: 767px) {
+      width: 300px;
+      height: 200px;
+   }
+   @media screen and (min-width: 768px) {
+      width: 450px;
+      height: 300px;
+   }
+}
+
+.gallery-img {
+   @media screen and (max-width: 767px) {
+      width: 300px;
+      height: 200px;
+   }
+   @media screen and (min-width: 768px) {
+      width: 450px;
+      height: 350px;
+   }
 }
 
 .info {
@@ -25,13 +61,19 @@
    align-items: center;
 }
 
+.gallery-content-box {
+}
+
 .load-more {
    display: block;
-   cursor: pointer;
+   margin: 0 auto;
+   margin-bottom: 25px;
 }
 
 .gallery-text-item {
    display: block;
+   margin: 0 auto;
+   margin-bottom: 25px;
 }
 .is-hidden {
    display: none;

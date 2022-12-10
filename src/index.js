@@ -15,9 +15,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 const picturesApiService = new PicturesApiService();
 
 searchForm.addEventListener('submit', e => {
-  loadMoreBtn.classList.remove('is-hidden');
   picturesApiService.clearPage();
-
   onClearMarkupContainer();
   getPictures(e);
 });
@@ -72,10 +70,11 @@ async function searchPictures() {
       return;
     }
     if (pictures.hits.length !== 0) {
-      Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
       renderMarkupGallery(pictures.hits);
       loadMoreBtn.classList.remove('is-hidden');
       galleryTextEl.classList.add('is-hidden');
+
+      Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
     }
   } catch (error) {
     console.dir(error);
