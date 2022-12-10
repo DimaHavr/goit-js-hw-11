@@ -1,0 +1,38 @@
+.gallery {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   flex: 1 1 1;
+   justify-content: center;
+}
+
+.photo-card {
+   width: 450px;
+   height: 350px;
+   object-fit: fill;
+   overflow: hidden;
+}
+
+.info {
+   display: flex;
+   justify-content: center;
+   display: none;
+}
+
+.info-item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.load-more {
+   display: block;
+   cursor: pointer;
+}
+
+.gallery-text-item {
+   display: block;
+}
+.is-hidden {
+   display: none;
+}
