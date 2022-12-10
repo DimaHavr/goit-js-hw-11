@@ -42,8 +42,6 @@ async function loadMorePictures() {
       loadMoreBtn.classList.add('is-hidden');
       galleryTextEl.classList.remove('is-hidden');
       renderMarkupGallery(pictures.hits);
-
-      Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
       return;
     }
   } catch (error) {
