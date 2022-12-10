@@ -22,13 +22,35 @@ searchForm.addEventListener('submit', e => {
   getPictures(e);
 });
 
-loadMoreBtn.addEventListener('click', searchPictures);
+loadMoreBtn.addEventListener('click', loadMorePictures);
 
 function getPictures(e) {
   e.preventDefault();
   picturesApiService.query = e.currentTarget.searchQuery.value;
   searchPictures();
   picturesApiService.clearPage();
+}
+
+async function loadMorePictures() {
+  try {
+    const pictures = await picturesApiService.fetchImage();
+
+    if (pictures.hits.length !== 0) {
+      renderMarkupGallery(pictures.hits);
+      loadMoreBtn.classList.remove('is-hidden');
+    }
+
+    if (pictures.hits.length < 40) {
+      loadMoreBtn.classList.add('is-hidden');
+      galleryTextEl.classList.remove('is-hidden');
+      renderMarkupGallery(pictures.hits);
+
+      Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
+      return;
+    }
+  } catch (error) {
+    console.dir(error);
+  }
 }
 
 async function searchPictures() {
@@ -45,7 +67,6 @@ async function searchPictures() {
     }
     if (pictures.hits.length < 40) {
       loadMoreBtn.classList.add('is-hidden');
-      galleryTextEl.classList.remove('is-hidden');
       Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
       renderMarkupGallery(pictures.hits);
       return;
@@ -54,6 +75,7 @@ async function searchPictures() {
       Notify.success(`Hooray! We found ${pictures.totalHits} images.`);
       renderMarkupGallery(pictures.hits);
       loadMoreBtn.classList.remove('is-hidden');
+      galleryTextEl.classList.add('is-hidden');
     }
   } catch (error) {
     console.dir(error);
