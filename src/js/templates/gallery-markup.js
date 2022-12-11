@@ -1,4 +1,4 @@
-const createMarkup = img => {
+const createGalleryMarkup = pictures => {
   const {
     downloads,
     comments,
@@ -7,7 +7,7 @@ const createMarkup = img => {
     tags,
     largeImageURL,
     webformatURL,
-  } = img;
+  } = pictures;
   return `
    <li class='photo-card'>
     <a href=${largeImageURL}>
@@ -33,4 +33,4 @@ const createMarkup = img => {
     </div>
   </li>`;
 };
-export { createMarkup };
+export { createGalleryMarkup };

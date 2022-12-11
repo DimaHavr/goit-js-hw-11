@@ -5,7 +5,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { PicturesApiService } from './js/get-pictures-api';
-import { createMarkup } from './js/templates/gallery-markup';
+import { createGalleryMarkup } from './js/templates/gallery-markup';
 
 const searchForm = document.querySelector('#search-form');
 const galleryContainer = document.querySelector('.gallery');
@@ -88,7 +88,7 @@ async function searchPictures(e) {
 }
 
 function renderMarkupGallery(pictures) {
-  const renderMarkupPictures = pictures.map(createMarkup).join('');
+  const renderMarkupPictures = pictures.map(createGalleryMarkup).join('');
   galleryContainer.insertAdjacentHTML('beforeend', renderMarkupPictures);
   onSimpleLightbox();
 }
