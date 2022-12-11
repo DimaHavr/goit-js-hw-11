@@ -25,6 +25,12 @@ loadMoreBtn.addEventListener('click', loadMorePictures);
 function getPictures(e) {
   e.preventDefault();
   picturesApiService.query = e.currentTarget.searchQuery.value;
+  if (picturesApiService.query.length === 0) {
+    Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
+    return;
+  }
   searchPictures();
   picturesApiService.clearPage();
 }
@@ -49,13 +55,13 @@ async function loadMorePictures() {
   }
 }
 
-async function searchPictures() {
+async function searchPictures(e) {
   loadMoreBtn.classList.add('is-hidden');
 
   try {
     const pictures = await picturesApiService.fetchImage();
 
-    if (pictures.hits.length === 0) {
+    if (pictures.totalHits === 0) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
