@@ -34,17 +34,23 @@
    @media screen and (max-width: 767px) {
       width: 300px;
       height: 200px;
+      &:active .info {
+         transform: scale(1);
+         transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+         transform: translate(0px, 0px);
+      }
    }
    @media screen and (min-width: 768px) {
       width: 450px;
       height: 300px;
-   }
+      &:hover .info,
+      &:focus .info {
+         transform: scale(1);
+         transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-   &:hover .info {
-      transform: scale(1);
-      transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-
-      transform: translate(0px, 0px);
+         transform: translate(0px, 0px);
+      }
    }
 }
 
